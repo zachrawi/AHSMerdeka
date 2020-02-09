@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AHS Merdeka</string>
+    <string name="customers">Pelanggan</string>
+    <string name="items">Barang</string>
+</resources>
