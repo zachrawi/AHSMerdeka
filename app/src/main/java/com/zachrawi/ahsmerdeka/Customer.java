@@ -1,6 +1,7 @@
 package com.zachrawi.ahsmerdeka;
 
 public class Customer {
+    private int id;
     private String name;
     private String address;
     private String phone;
@@ -13,6 +14,14 @@ public class Customer {
         this.name = name;
         this.address = address;
         this.phone = phone;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
