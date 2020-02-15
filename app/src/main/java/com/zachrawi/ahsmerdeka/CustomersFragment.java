@@ -1,6 +1,7 @@
 package com.zachrawi.ahsmerdeka;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,7 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
+
 public class CustomersFragment extends Fragment {
+    private static final String TAG = "###";
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -24,6 +29,21 @@ public class CustomersFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: ");
+
+        AHSDBHelper ahsdbHelper = new AHSDBHelper(getActivity());
+        ArrayList<Customer> customers = ahsdbHelper.getCustomers();
+
+        for (int i = 0; i < customers.size(); i++) {
+            Log.d(TAG, customers.get(i).getName() + ", " +
+                    customers.get(i).getAddress() + ", " +
+                    customers.get(i).getPhone());
+        }
     }
 
     @Override
