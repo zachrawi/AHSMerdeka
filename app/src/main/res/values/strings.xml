@@ -6,4 +6,9 @@
 
     <string name="navigation_drawer_open" translatable="false">Open Navigation Drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close Navigation Drawer</string>
+    <string name="add_customer">Add Customer</string>
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="phone">Phone</string>
+    <string name="save">Save</string>
 </resources>
