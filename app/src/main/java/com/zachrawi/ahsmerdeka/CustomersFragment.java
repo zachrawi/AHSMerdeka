@@ -12,16 +12,36 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 public class CustomersFragment extends Fragment {
     private static final String TAG = "###";
 
+    RecyclerView recyclerView;
+    CustomerAdapter customerAdapter;
+    ArrayList<Customer> customers;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_customers, container, false);
+        View view = inflater.inflate(R.layout.fragment_customers, container, false);
+
+        Log.d(TAG, "onCreateView: ");
+        recyclerView = view.findViewById(R.id.recyclerView);
+
+        AHSDBHelper ahsdbHelper = new AHSDBHelper(getActivity());
+        customers = ahsdbHelper.getCustomers();
+
+        customerAdapter = new CustomerAdapter(getActivity(), R.layout.item_customer, customers);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(customerAdapter);
+
+        return view;
     }
 
     @Override
@@ -29,21 +49,6 @@ public class CustomersFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume: ");
-
-        AHSDBHelper ahsdbHelper = new AHSDBHelper(getActivity());
-        ArrayList<Customer> customers = ahsdbHelper.getCustomers();
-
-        for (int i = 0; i < customers.size(); i++) {
-            Log.d(TAG, customers.get(i).getName() + ", " +
-                    customers.get(i).getAddress() + ", " +
-                    customers.get(i).getPhone());
-        }
     }
 
     @Override

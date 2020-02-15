@@ -11,4 +11,6 @@
     <string name="address">Address</string>
     <string name="phone">Phone</string>
     <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 </resources>

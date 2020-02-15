@@ -8,4 +8,6 @@
     <string name="address">Alamat</string>
     <string name="phone">Telepon</string>
     <string name="save">Simpan</string>
+    <string name="delete">Hapus</string>
+    <string name="edit">Sunting</string>
 </resources>

@@ -1,9 +1,11 @@
 package com.zachrawi.ahsmerdeka;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,9 +46,16 @@ public class AddCustomerFragment extends Fragment {
                         .beginTransaction()
                         .replace(R.id.frameLayout, new CustomersFragment())
                         .commit();
+
+                hideKeyboard();
             }
         });
 
         return view;
+    }
+
+    private void hideKeyboard() {
+        InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
     }
 }
